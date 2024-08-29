@@ -9,13 +9,15 @@ public class Main {
         int balance = sc.nextInt();
 
         BankAccount Acc = new BankAccount();
+        BankAccount destAcc = new BankAccount(0);
         Acc.setBalance(balance);
         while (flag != 1) {
 
             System.out.println("Enter 1 to Show Balance");
             System.out.println("Enter 2 to Withdraw Money");
             System.out.println("Enter 3 to Deposit Money");
-            System.out.println("Enter 4 to Exit");
+            System.out.println("Enter 4 to Transfer Money");
+            System.out.println("Enter 5 to Exit");
             int choice = sc.nextInt();
 
             switch (choice) {
@@ -32,7 +34,7 @@ public class Main {
                     System.out.println("\nBalance in your account now: " + Acc.getBalance());
                     }
                     else {
-                        System.out.print("Transaction Failed ..... Insufficient Balance ");
+                        System.out.println("Transaction Failed ..... Insufficient Balance ");
                     }
                     break;
                 case 3:
@@ -42,11 +44,21 @@ public class Main {
                     System.out.println("\nBalance in your account now: " + Acc.getBalance());
                     break;
                 case 4:
+                    System.out.print("Enter the amount to Transfer from your account to destination account: ");
+                    amount = sc.nextInt();
+                    Acc.Transfer(destAcc, amount);
+                    System.out.println("Money transferred Successfully");
+                    System.out.println("Balance in your account now: " + Acc.getBalance());
+                    System.out.println("Balance in destination account now: " + destAcc.getBalance()+"\n");
+                    break;
+
+                case 5:
                     flag = 1;
+                    System.out.println("\nFinal Balance in your account: " + Acc.getBalance());
                     System.out.println("Thank you for using our account!");
                     break;
             }
-            System.out.println("\n");
+
 
 
 

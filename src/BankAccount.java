@@ -12,6 +12,14 @@ public class BankAccount {
     public void withdraw(float amount){
         balance -= amount;
     }
+    public void Transfer(BankAccount destAcc, float amount){
+        withdraw(amount);
+        destAcc.deposit(amount);
+
+    }
+
+
+
     public float getBalance(){
         return balance;
     }
