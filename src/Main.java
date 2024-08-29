@@ -8,7 +8,7 @@ public class Main {
         System.out.print("Enter the balance in your Account: ");
         int balance = sc.nextInt();
 
-        BankAccount Acc = new BankAccount();
+        BankAccount Acc = new BankAccount(balance);
         BankAccount destAcc = new BankAccount(0);
         Acc.setBalance(balance);
         while (flag != 1) {
@@ -17,12 +17,14 @@ public class Main {
             System.out.println("Enter 2 to Withdraw Money");
             System.out.println("Enter 3 to Deposit Money");
             System.out.println("Enter 4 to Transfer Money");
-            System.out.println("Enter 5 to Exit");
+            System.out.println("Enter 5 to print transaction history");
+            System.out.println("Enter 6 to Exit");
             int choice = sc.nextInt();
 
             switch (choice) {
                 case 1:
                     System.out.println("The Balance in your account = " + Acc.getBalance());
+                    System.out.println("--------------------------------------");
                     break;
                 case 2:
 
@@ -36,26 +38,42 @@ public class Main {
                     else {
                         System.out.println("Transaction Failed ..... Insufficient Balance ");
                     }
+                    System.out.println("--------------------------------------");
                     break;
                 case 3:
                     System.out.print("Enter the amount to deposit from your account: ");
                     Acc.deposit(sc.nextInt());
                     System.out.print("Money deposited in your account Successfully");
                     System.out.println("\nBalance in your account now: " + Acc.getBalance());
+                    System.out.println("--------------------------------------");
                     break;
                 case 4:
                     System.out.print("Enter the amount to Transfer from your account to destination account: ");
                     int transferamount = sc.nextInt();
-                    Acc.Transfer(destAcc, transferamount);
-                    System.out.println("Money transferred Successfully");
-                    System.out.println("Balance in your account now: " + Acc.getBalance());
-                    System.out.println("Balance in destination account now: " + destAcc.getBalance()+"\n");
+                    if(Acc.getBalance() > transferamount) {
+                        Acc.Transfer(destAcc, transferamount);
+                        System.out.println("Money transferred Successfully");
+                        System.out.println("Balance in your account now: " + Acc.getBalance());
+                        System.out.println("Balance in destination account now: " + destAcc.getBalance() + "\n");
+                    }
+                    else{
+                     System.out.println("Transaction Failed ..... Insufficient Balance ");
+                    }
+                    System.out.println("--------------------------------------");
                     break;
-
                 case 5:
+                    System.out.println("Transaction history");
+                    for(Object t :Acc.gettranscation()){
+                        System.out.println(t);
+                    }
+                    System.out.println("Current Balance: " + Acc.getBalance());
+                    System.out.println("--------------------------------------");
+                    break;
+                case 6:
                     flag = 1;
                     System.out.println("\nFinal Balance in your account: " + Acc.getBalance());
                     System.out.println("Thank you for using our account!");
+                    System.out.println("--------------------------------------");
                     break;
             }
 
