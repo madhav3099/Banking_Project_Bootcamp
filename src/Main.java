@@ -45,8 +45,8 @@ public class Main {
                     break;
                 case 4:
                     System.out.print("Enter the amount to Transfer from your account to destination account: ");
-                    amount = sc.nextInt();
-                    Acc.Transfer(destAcc, amount);
+                    int transferamount = sc.nextInt();
+                    Acc.Transfer(destAcc, transferamount);
                     System.out.println("Money transferred Successfully");
                     System.out.println("Balance in your account now: " + Acc.getBalance());
                     System.out.println("Balance in destination account now: " + destAcc.getBalance()+"\n");
