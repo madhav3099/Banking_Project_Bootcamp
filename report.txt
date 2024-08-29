@@ -1,0 +1,10 @@
+Transaction History:
+Initial Balance: 1000.0
+Withdrawn: 222.0
+Deposited: 2.0
+Withdrawn: 200.0
+Transferred: 200.0 to destination account
+Withdrawn: 111.0
+Deposited: 600.0
+Closing Balance: 1069.0
+

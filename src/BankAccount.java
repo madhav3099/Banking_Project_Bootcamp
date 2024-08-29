@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,21 @@ public class BankAccount {
 
     public List gettranscation(){
         return transactions;
+    }
+
+    public void saveTransactionReport(String fileName) {
+        try (FileWriter writer = new FileWriter(fileName, false))
+        {
+            writer.write("Transaction History:\n");
+            for (Object transaction : transactions) {
+                writer.write(transaction + "\n"); // Write each transaction
+            }
+            writer.write("Closing Balance: " + balance + "\n");
+            writer.write("\n");
+            System.out.println("Report saved to " + fileName);
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file: " + e.getMessage());
+        }
     }
 
     public float getBalance(){
